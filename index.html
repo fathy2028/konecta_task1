@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product List with Cart</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="src/styles/main.css">
 </head>
 <body>
     <div class="container">
@@ -20,50 +20,8 @@
             </section>
             
             <aside class="cart-section">
-                <div class="cart-container">
-                    <h2>Your Cart (<span id="cart-count">0</span>)</h2>
-                    
-                    <div class="user-section">
-                        <input type="text" id="user-name" placeholder="Enter your name (optional)">
-                        <button id="save-user">Save User</button>
-                        <select id="saved-users">
-                            <option value="">Select saved user</option>
-                        </select>
-                    </div>
-                    
-                    <div class="discount-section">
-                        <input type="text" id="discount-code" placeholder="Discount code">
-                        <button id="apply-discount">Apply</button>
-                        <div id="discount-info"></div>
-                    </div>
-                    
-                    <div id="empty-cart" class="empty-cart">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 128 128'%3E%3Cpath fill='%23260F08' d='M8.436 110.406c0 1.061 4.636 2.079 9.849 2.079 5.213 0 9.849-1.018 9.849-2.079v-2.913c0 1.061-4.636 2.079-9.849 2.079-5.213 0-9.849-1.018-9.849-2.079v2.913Z'/%3E%3C/svg%3E" alt="Empty cart">
-                        <p>Your added items will appear here</p>
-                    </div>
-                    
-                    <div id="cart-items" class="cart-items"></div>
-                    
-                    <div id="cart-total" class="cart-total" style="display: none;">
-                        <div class="total-row">
-                            <span>Subtotal:</span>
-                            <span id="subtotal">$0.00</span>
-                        </div>
-                        <div class="total-row discount-row" id="discount-row" style="display: none;">
-                            <span>Discount:</span>
-                            <span id="discount-amount">-$0.00</span>
-                        </div>
-                        <div class="total-row final-total">
-                            <span>Order Total:</span>
-                            <span id="final-total">$0.00</span>
-                        </div>
-                        <div class="carbon-neutral">
-                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 21 20'%3E%3Cpath fill='%231EA575' d='M8 18.35c-4.97 0-9-4.03-9-9s4.03-9 9-9 9 4.03 9 9-4.03 9-9 9Zm-.75-10.65L4.5 10.45l1.25 1.25L9.5 8.95l5.25 5.25L16 12.95 9.25 6.2l-2 2.5Z'/%3E%3C/svg%3E" alt="Carbon neutral">
-                            <span>This is a <strong>carbon-neutral</strong> delivery</span>
-                        </div>
-                        <button id="confirm-order" class="confirm-order-btn">Confirm Order</button>
-                        <button id="print-receipt" class="print-receipt-btn">Print Receipt</button>
-                    </div>
+                <div class="cart-container" id="cart-container">
+                    <!-- Cart will be dynamically loaded here -->
                 </div>
             </aside>
         </main>
@@ -71,20 +29,24 @@
     
     <!-- Order Confirmation Modal -->
     <div id="order-modal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 48 48'%3E%3Cpath fill='%231EA575' d='M21 32.121 13.5 24.6l2.121-2.121L21 27.879l11.379-11.379 2.121 2.121L21 32.121Z'/%3E%3C/svg%3E" alt="Order confirmed">
-                <h2>Order Confirmed</h2>
-                <p>We hope you enjoy your food!</p>
-            </div>
-            <div class="modal-body" id="modal-order-items"></div>
-            <div class="modal-total">
-                <span>Order Total: <strong id="modal-total">$0.00</strong></span>
-            </div>
-            <button id="start-new-order" class="start-new-order-btn">Start New Order</button>
-        </div>
+        <!-- Modal content will be dynamically loaded here -->
     </div>
     
-    <script src="script.js"></script>
+    <!-- Load all components and services -->
+    <script src="src/utils/constants.js"></script>
+    <script src="src/utils/helpers.js"></script>
+    <script src="src/services/storage-service.js"></script>
+    <script src="src/services/product-service.js"></script>
+    <script src="src/services/cart-service.js"></script>
+    <script src="src/services/discount-service.js"></script>
+    <script src="src/services/print-service.js"></script>
+    <script src="src/components/product/product-card.js"></script>
+    <script src="src/components/product/product-grid.js"></script>
+    <script src="src/components/cart/cart-item.js"></script>
+    <script src="src/components/cart/cart-total.js"></script>
+    <script src="src/components/cart/cart.js"></script>
+    <script src="src/components/user/user-manager.js"></script>
+    <script src="src/components/modal/order-modal.js"></script>
+    <script src="src/app.js"></script>
 </body>
 </html>

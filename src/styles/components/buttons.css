@@ -1,0 +1,76 @@
+.btn {
+    padding: var(--spacing-md);
+    border: none;
+    border-radius: var(--border-radius-sm);
+    font-size: 1rem;
+    font-weight: var(--font-weight-semibold);
+    cursor: pointer;
+    transition: background var(--transition-normal);
+}
+
+.btn-primary {
+    background: var(--color-primary);
+    color: var(--color-white);
+}
+
+.btn-primary:hover {
+    background: #a02d0a;
+}
+
+.btn-secondary {
+    background: var(--color-secondary);
+    color: var(--color-white);
+}
+
+.btn-secondary:hover {
+    background: #178a5f;
+}
+
+.btn-full {
+    width: 100%;
+}
+
+.btn-rounded {
+    border-radius: var(--border-radius-lg);
+}
+
+.confirm-order-btn,
+.print-receipt-btn,
+.start-new-order-btn {
+    width: 100%;
+    padding: var(--spacing-md);
+    border: none;
+    border-radius: var(--border-radius-lg);
+    font-size: 1rem;
+    font-weight: var(--font-weight-semibold);
+    cursor: pointer;
+    margin-bottom: var(--spacing-sm);
+    transition: background var(--transition-normal);
+}
+
+.confirm-order-btn {
+    background: var(--color-primary);
+    color: var(--color-white);
+}
+
+.confirm-order-btn:hover {
+    background: #a02d0a;
+}
+
+.print-receipt-btn {
+    background: var(--color-secondary);
+    color: var(--color-white);
+}
+
+.print-receipt-btn:hover {
+    background: #178a5f;
+}
+
+.start-new-order-btn {
+    background: var(--color-primary);
+    color: var(--color-white);
+}
+
+.start-new-order-btn:hover {
+    background: #a02d0a;
+}
