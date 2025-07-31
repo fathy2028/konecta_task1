@@ -3,7 +3,7 @@ class App {
     constructor() {
         this.cartService = new CartService();
         this.discountService = new DiscountService();
-        this.userManager = new UserManager();
+        this.userManager = null;
         this.productGrid = null;
         this.cart = null;
         this.orderModal = null;
@@ -24,6 +24,9 @@ class App {
         
         // Initialize cart
         this.cart = new Cart('cart-container', this.cartService, this.discountService);
+        
+        // Initialize user manager AFTER cart is rendered
+        this.userManager = new UserManager();
         
         // Initialize order modal
         this.orderModal = new OrderModal('order-modal', this.cartService, this.discountService);

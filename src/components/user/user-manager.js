@@ -6,6 +6,8 @@ class UserManager {
     }
     
     init() {
+        // Since this is called after cart is rendered, we can directly initialize
+        this.loadCurrentUser();
         this.loadSavedUsers();
         this.attachEventListeners();
     }
@@ -22,6 +24,13 @@ class UserManager {
                 this.loadUser();
             }
         });
+        
+        // Listen for input changes to update current user
+        document.addEventListener('input', (e) => {
+            if (e.target.id === 'user-name') {
+                this.setCurrentUser(e.target.value.trim());
+            }
+        });
     }
     
     saveUser() {
@@ -31,8 +40,8 @@ class UserManager {
         if (!userName) return;
         
         if (StorageService.saveUser(userName)) {
-            this.currentUser = userName;
-            userNameInput.value = '';
+            this.setCurrentUser(userName);
+            userNameInput.value = userName;
             this.loadSavedUsers();
         }
     }
@@ -47,6 +56,9 @@ class UserManager {
                 const option = document.createElement('option');
                 option.value = user;
                 option.textContent = user;
+                if (user === this.currentUser) {
+                    option.selected = true;
+                }
                 select.appendChild(option);
             });
         }
@@ -58,12 +70,30 @@ class UserManager {
         
         if (select && userNameInput) {
             const selectedUser = select.value;
-            this.currentUser = selectedUser;
+            this.setCurrentUser(selectedUser);
             userNameInput.value = selectedUser;
         }
+    }
+    
+    loadCurrentUser() {
+        const savedCurrentUser = StorageService.getCurrentUser();
+        if (savedCurrentUser) {
+            this.currentUser = savedCurrentUser;
+            const userNameInput = document.getElementById('user-name');
+            if (userNameInput) {
+                userNameInput.value = savedCurrentUser;
+            }
+        }
+    }
+    
+    setCurrentUser(userName) {
+        this.currentUser = userName;
+        StorageService.setCurrentUser(userName);
     }
     
     getCurrentUser() {
         return this.currentUser;
     }
 }
+
+

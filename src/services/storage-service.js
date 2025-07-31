@@ -42,4 +42,16 @@ class StorageService {
         }
         return true;
     }
+    
+    static getCurrentUser() {
+        return this.get(APP_CONFIG.STORAGE_KEYS.CURRENT_USER) || '';
+    }
+    
+    static setCurrentUser(userName) {
+        return this.set(APP_CONFIG.STORAGE_KEYS.CURRENT_USER, userName);
+    }
+    
+    static clearCurrentUser() {
+        return this.remove(APP_CONFIG.STORAGE_KEYS.CURRENT_USER);
+    }
 }

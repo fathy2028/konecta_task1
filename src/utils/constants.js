@@ -1,7 +1,8 @@
 // Application constants
 const APP_CONFIG = {
     STORAGE_KEYS: {
-        SAVED_USERS: 'savedUsers'
+        SAVED_USERS: 'savedUsers',
+        CURRENT_USER: 'currentUser'
     },
     DISCOUNT_CODES: {
         'SAVE10': { type: 'percentage', value: 10, description: '10% off' },

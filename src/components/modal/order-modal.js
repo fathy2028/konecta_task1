@@ -78,7 +78,7 @@ class OrderModal {
         this.cartService.clear();
         this.discountService.clearDiscount();
         
-        // Clear form inputs
+        // Clear form inputs but keep current user
         const discountCodeInput = document.getElementById('discount-code');
         const discountInfo = document.getElementById('discount-info');
         
@@ -88,3 +88,4 @@ class OrderModal {
         this.hide();
     }
 }
+
